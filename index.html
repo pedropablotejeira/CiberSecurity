@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portafolio de Ciberseguridad | Grupo #4</title>
+  <style>
+    :root {
+      --bg: #090d0b;
+      --card-bg: #121a15;
+      --accent: #10b981;
+      --text: #ecfdf5;
+      --text-muted: #6ee7b7;
+      --border: #1f3a2b;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      margin: 0;
+      padding: 10px;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    /* PORTADA DE PRESENTACIÓN */
+    .cover-page {
+      background: var(--card-bg);
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 10px 10px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .logo-container {
+      margin-bottom: 20px;
+    }
+
+    .cover-logo {
+      width: 100%;
+      max-width: 450px;
+      height: auto;
+      object-fit: contain;
+    }
+
+    .cover-section {
+      margin-bottom: 30px;
+    }
+
+    .cover-section h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .cover-section p {
+      font-size: 1.05rem;
+      margin: 4px 0;
+      color: var(--text);
+    }
+
+    /* LISTA DE INTEGRANTES EN 2 COLUMNAS */
+    .members-list {
+      max-width: 580px;
+      margin: 15px auto 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px 16px;
+    }
+
+    @media (max-width: 500px) {
+      .members-list {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .member-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 12px;
+      background: rgba(31, 58, 43, 0.3);
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      font-size: 0.9rem;
+    }
+
+    .member-name {
+      font-weight: 600;
+      text-align: left;
+    }
+
+    .member-id {
+      color: var(--text-muted);
+      font-family: monospace;
+      margin-left: 8px;
+    }
+
+    /* Botón de Entrada al Portafolio */
+    .btn-enter {
+      display: inline-block;
+      background: var(--accent);
+      color: #090d0b;
+      font-weight: 700;
+      padding: 12px 28px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: transform 0.2s, background 0.2s;
+      margin-top: 0px;
+    }
+
+    .btn-enter:hover {
+      transform: translateY(-2px);
+      background: #34d399;
+    }
+
+    /* VISTA DE PORTAFOLIO Y NAVEGACIÓN */
+    header#portfolio-header {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    header#portfolio-header h1 {
+      color: var(--accent);
+      margin: 0 0 8px 0;
+      font-size: 2rem;
+    }
+
+    header#portfolio-header p {
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    .weeks-nav {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+      gap: 10px;
+      margin-bottom: 30px;
+    }
+
+    .week-btn {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 10px 8px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.2s ease;
+      text-align: center;
+    }
+
+    .week-btn:hover {
+      background: var(--border);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .btn-back {
+      display: inline-block;
+      background: var(--card-bg);
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* CONTENEDOR Y IMÁGENES SIN RECORTAR */
+    .carousel-container {
+      position: relative;
+      width: 100%;
+      height: 240px;
+      background-color: #040806;
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .carousel-img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      opacity: 0;
+      transition: opacity 0.4s ease-in-out;
+      cursor: zoom-in;
+    }
+
+    .carousel-img.active {
+      opacity: 1;
+    }
+
+    /* Botones de Navegación del Carrusel */
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(9, 13, 11, 0.8);
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 0.9rem;
+      z-index: 2;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .carousel-btn:hover {
+      background: var(--accent);
+      color: #090d0b;
+    }
+
+    .carousel-btn.prev { left: 8px; }
+    .carousel-btn.next { right: 8px; }
+
+    /* Indicadores en Puntos (Dots) */
+    .carousel-dots {
+      position: absolute;
+      bottom: 8px;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      z-index: 2;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.4);
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .dot.active {
+      background: var(--accent);
+    }
+
+    .card-content {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .week-badge {
+      align-self: flex-start;
+      background: rgba(16, 185, 129, 0.1);
+      color: var(--accent);
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .card h2 {
+      margin: 0 0 10px 0;
+      font-size: 1.2rem;
+    }
+
+    .card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin: 0;
+    }
+
+    /* MODAL EN PANTALLA COMPLETA AL HACER CLICK EN UNA IMAGEN */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      max-width: 95%;
+      max-height: 95%;
+      border-radius: 8px;
+      box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+      object-fit: contain;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      color: #fff;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+
+    .modal-close:hover {
+      color: var(--accent);
+    }
+
+    .hidden {
+      display: none !important;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- PRIMERA PÁGINA: HOJA DE PRESENTACIÓN -->
+    <div id="cover-view">
+      <div class="cover-page">
+        
+        <div class="logo-container">
+          <img src="logo-itse.png" alt="Logo ITSE" class="cover-logo">
+        </div>
+
+        <div class="cover-section">
+          <h3>Portafolio de Ciberseguridad</h3>
+          <p>Evidencias de Curso CiberSeguridad</p>
+        </div>
+
+        <div class="cover-section">
+          <h3>Grupo #4</h3>
+          <div class="members-list">
+            <div class="member-row">
+              <span class="member-name">Cardozo, Miriam</span>
+              <span class="member-id">E-8-16-2024</span>
+            </div>
+            <div class="member-row">
+              <span class="member-name">Córdoba, Boris</span>
+              <span class="member-id">8-950-2421</span>
+            </div>
+            <div class="member-row">
+              <span class="member-name">González, Isabel</span>
+              <span class="member-id">8-822-1535</span>
+            </div>
+            <div class="member-row">
+              <span class="member-name">González, Jeisson</span>
+              <span class="member-id">8-898-2018</span>
+            </div>
+            <div class="member-row">
+              <span class="member-name">Mejía, David</span>
+              <span class="member-id">8-1057-293</span>
+            </div>
+            <div class="member-row">
+              <span class="member-name">Tejeira, Pedro</span>
+              <span class="member-id">8-741-1265</span>
+            </div>
+            <div class="member-row">
+              <span class="member-name">Vives, Levis</span>
+              <span class="member-id">E-8-22-4213</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="cover-section" style="margin-bottom: 8px;">
+          <h3>Profesor</h3>
+          <p>Arel Rivera</p>
+        </div>
+
+        <button class="btn-enter" onclick="openPortfolio()">Ver Portafolio por Semanas →</button>
+      </div>
+    </div>
+
+    <!-- PÁGINAS SIGUIENTES: NAVEGACIÓN Y PORTAFOLIO -->
+    <div id="portfolio-view" class="hidden">
+      
+      <button class="btn-back" onclick="showCover()">← Volver a la Presentación</button>
+
+      <!-- Encabezado que solo se mostrará al hacer clic en "Ver Todas" -->
+      <header id="portfolio-header">
+        <h1>Portafolio de Ciberseguridad</h1>
+        <p>Grupo #4 | Registro de Avance Semanal (14 Semanas)</p>
+      </header>
+
+      <!-- Navegación por Semanas -->
+      <div class="weeks-nav">
+        <button class="week-btn" onclick="filterWeek('all')">Ver Todas</button>
+        <button class="week-btn" onclick="filterWeek('semana-1')">Semana 1</button>
+        <button class="week-btn" onclick="filterWeek('semana-2')">Semana 2</button>
+        <button class="week-btn" onclick="filterWeek('semana-3')">Semana 3</button>
+        <button class="week-btn" onclick="filterWeek('semana-4')">Semana 4</button>
+        <button class="week-btn" onclick="filterWeek('semana-5')">Semana 5</button>
+        <button class="week-btn" onclick="filterWeek('semana-6')">Semana 6</button>
+        <button class="week-btn" onclick="filterWeek('semana-7')">Semana 7</button>
+        <button class="week-btn" onclick="filterWeek('semana-8')">Semana 8</button>
+        <button class="week-btn" onclick="filterWeek('semana-10')">Semana 10</button>
+        <button class="week-btn" onclick="filterWeek('semana-11')">Semana 11</button>
+        <button class="week-btn" onclick="filterWeek('semana-12')">Semana 12</button>
+        <button class="week-btn" onclick="filterWeek('semana-14')">Semana 14</button>
+      </div>
+
+      <!-- Tarjetas de contenido por Semana -->
+      <main class="grid">
+
+        <!-- Semana 1 -->
+        <article class="card week-card semana-1">
+          <div class="carousel-container">
+            <img src="semana01-1.png" alt="Evidencia Semana 1 - Imagen 1" class="carousel-img active" onclick="openModal(this.src)">
+            <img src="semana01-2.png" alt="Evidencia Semana 1 - Imagen 2" class="carousel-img" onclick="openModal(this.src)">
+            <button class="carousel-btn prev" onclick="moveSlide(this, -1)">❮</button>
+            <button class="carousel-btn next" onclick="moveSlide(this, 1)">❯</button>
+            <div class="carousel-dots">
+              <span class="dot active" onclick="setSlide(this, 0)"></span>
+              <span class="dot" onclick="setSlide(this, 1)"></span>
+            </div>
+          </div>
+          <div class="card-content">
+            <span class="week-badge">Semana 01</span>
+            <h2>Módulo 1: Fundamentos, activos y Amenazas</h2>
+            <p>La tríada CIA (Confidencialidad, Integridad, Disponibilidad).</p>
+          </div>
+        </article>
+
+        <!-- Semana 2 -->
+        <article class="card week-card semana-2">
+          <div class="carousel-container">
+            <img src="semana02-1.png" alt="Evidencia Semana 2 - Imagen 1" class="carousel-img active" onclick="openModal(this.src)">
+            <img src="semana02-2.png" alt="Evidencia Semana 2 - Imagen 2" class="carousel-img" onclick="openModal(this.src)">
+            <img src="semana02-3.png" alt="Evidencia Semana 2 - Imagen 3" class="carousel-img" onclick="openModal(this.src)">
+			<button class="carousel-btn prev" onclick="moveSlide(this, -1)">❮</button>
+            <button class="carousel-btn next" onclick="moveSlide(this, 1)">❯</button>
+            <div class="carousel-dots">
+              <span class="dot active" onclick="setSlide(this, 0)"></span>
+              <span class="dot" onclick="setSlide(this, 1)"></span>
+              <span class="dot" onclick="setSlide(this, 2)"></span>
+			</div>
+          </div>
+          <div class="card-content">
+            <span class="week-badge">Semana 02</span>
+            <h2>Módulo 1: Fundamentos, activos y Amenazas</h2>
+            <p>Laboratorio Táctico: Inventario y Tríada CIA.</p>
+          </div>
+        </article>
+		
+        <!-- Semana 3 -->
+        <article class="card week-card semana-3">
+          <div class="carousel-container">
+            <img src="semana03-1.png" alt="Evidencia Semana 3 - Imagen 1" class="carousel-img active" onclick="openModal(this.src)">
+			<img src="semana03-2.png" alt="Evidencia Semana 3 - Imagen 2" class="carousel-img" onclick="openModal(this.src)">
+			<img src="semana03-3.png" alt="Evidencia Semana 3 - Imagen 3" class="carousel-img" onclick="openModal(this.src)">
+			<img src="semana03-4.png" alt="Evidencia Semana 3 - Imagen 4" class="carousel-img" onclick="openModal(this.src)">
+			<button class="carousel-btn prev" onclick="moveSlide(this, -1)">❮</button>
+            <button class="carousel-btn next" onclick="moveSlide(this, 1)">❯</button>
+            <div class="carousel-dots">
+              <span class="dot active" onclick="setSlide(this, 0)"></span>
+              <span class="dot" onclick="setSlide(this, 1)"></span>
+              <span class="dot" onclick="setSlide(this, 2)"></span>
+			  <span class="dot" onclick="setSlide(this, 3)"></span>
+          </div>
+		  </div>
+          <div class="card-content">
+            <span class="week-badge">Semana 03</span>
+            <h2>Módulo 1: Fundamentos, activos y Amenazas</h2>
+            <p>Vulnerabilidades y Amenazas.</p>
+          </div>
+        </article>
+
+        <!-- Semana 4 -->
+        <article class="card week-card semana-4">
+          <div class="carousel-container">
+            <img src="semana04-1.png" alt="Evidencia Semana 4 - Imagen 1" class="carousel-img active" onclick="openModal(this.src)">
+			<img src="semana04-2.png" alt="Evidencia Semana 4 - Imagen 2" class="carousel-img" onclick="openModal(this.src)">
+			<img src="semana04-3.png" alt="Evidencia Semana 4 - Imagen 3" class="carousel-img" onclick="openModal(this.src)">
+			<img src="semana04-4.png" alt="Evidencia Semana 4 - Imagen 4" class="carousel-img" onclick="openModal(this.src)">
+			<button class="carousel-btn prev" onclick="moveSlide(this, -1)">❮</button>
+            <button class="carousel-btn next" onclick="moveSlide(this, 1)">❯</button>
+            <div class="carousel-dots">
+              <span class="dot active" onclick="setSlide(this, 0)"></span>
+              <span class="dot" onclick="setSlide(this, 1)"></span>
+              <span class="dot" onclick="setSlide(this, 2)"></span>
+			  <span class="dot" onclick="setSlide(this, 3)"></span>
+          </div>
+		  </div>
+          <div class="card-content">
+            <span class="week-badge">Semana 04</span>
+            <h2>Módulo 2: Riesgo, Amenza y Vulnerabilidad</h2>
+            <p>Anatomía de un Desastre Evitable</p>
+          </div>
+        </article>
+
+        <!-- Semana 5 -->
+        <article class="card week-card semana-5">
+          <div class="carousel-container">
+            <img src="semana05-1.png" alt="Evidencia Semana 5 - Imagen 1" class="carousel-img active" onclick="openModal(this.src)">
+			<img src="semana05-2.png" alt="Evidencia Semana 5 - Imagen 2" class="carousel-img" onclick="openModal(this.src)">
+			<img src="semana05-3.png" alt="Evidencia Semana 5 - Imagen 3" class="carousel-img" onclick="openModal(this.src)">
+			<img src="semana05-4.png" alt="Evidencia Semana 5 - Imagen 4" class="carousel-img" onclick="openModal(this.src)">
+			<button class="carousel-btn prev" onclick="moveSlide(this, -1)">❮</button>
+            <button class="carousel-btn next" onclick="moveSlide(this, 1)">❯</button>
+            <div class="carousel-dots">
+              <span class="dot active" onclick="setSlide(this, 0)"></span>
+              <span class="dot" onclick="setSlide(this, 1)"></span>
+              <span class="dot" onclick="setSlide(this, 2)"></span>
+			  <span class="dot" onclick="setSlide(this, 3)"></span>
+          </div>
+          </div>
+          <div class="card-content">
+            <span class="week-badge">Semana 05</span>
+            <h2>Módulo 2: Vulnerabilidades, CVEs y el Ciclo de Vida de un Ataque</h2>
+            <p>La Anatomía del Ciberataque</p>
+          </div>
+        </article>
+
+        <!-- Semana 6 -->
+        <article class="card week-card semana-6">
+          <div class="carousel-container">
+            <img src="semana06-1.png" alt="Evidencia Semana 6 - Imagen 1" class="carousel-img active" onclick="openModal(this.src)">
+			<img src="semana06-2.png" alt="Evidencia Semana 6 - Imagen 2" class="carousel-img" onclick="openModal(this.src)">
+			<img src="semana06-3.png" alt="Evidencia Semana 6 - Imagen 3" class="carousel-img" onclick="openModal(this.src)">
+			<button class="carousel-btn prev" onclick="moveSlide(this, -1)">❮</button>
+            <button class="carousel-btn next" onclick="moveSlide(this, 1)">❯</button>
+            <div class="carousel-dots">
+              <span class="dot active" onclick="setSlide(this, 0)"></span>
+              <span class="dot" onclick="setSlide(this, 1)"></span>
+              <span class="dot" onclick="setSlide(this, 2)"></span>
+          </div>
+		  </div>
+          <div class="card-content">
+            <span class="week-badge">Semana 06</span>
+            <h2>Charlas y Debates:</h2>
+            <p>Cuando la Identidad Cae</p>
+          </div>
+        </article>
+
+        <!-- Semana 7 -->
+        <article class="card week-card semana-7">
+          <div class="carousel-container">
+            <img src="semana07-1.png" alt="Evidencia Semana 7 - Imagen 1" class="carousel-img active" onclick="openModal(this.src)">
+			<img src="semana07-2.png" alt="Evidencia Semana 7 - Imagen 2" class="carousel-img" onclick="openModal(this.src)">
+			<img src="semana07-3.png" alt="Evidencia Semana 7 - Imagen 3" class="carousel-img" onclick="openModal(this.src)">
+			<img src="semana07-4.png" alt="Evidencia Semana 7 - Imagen 4" class="carousel-img" onclick="openModal(this.src)">
+			<img src="semana07-5.png" alt="Evidencia Semana 7 - Imagen 5" class="carousel-img" onclick="openModal(this.src)">
+			<img src="semana07-6.png" alt="Evidencia Semana 7 - Imagen 6" class="carousel-img" onclick="openModal(this.src)">
+			<button class="carousel-btn prev" onclick="moveSlide(this, -1)">❮</button>
+            <button class="carousel-btn next" onclick="moveSlide(this, 1)">❯</button>
+            <div class="carousel-dots">
+              <span class="dot active" onclick="setSlide(this, 0)"></span>
+              <span class="dot" onclick="setSlide(this, 1)"></span>
+              <span class="dot" onclick="setSlide(this, 2)"></span>
+			  <span class="dot" onclick="setSlide(this, 3)"></span>
+			  <span class="dot" onclick="setSlide(this, 4)"></span>
+			  <span class="dot" onclick="setSlide(this, 5)"></span>
+          </div>
+          </div>
+          <div class="card-content">
+            <span class="week-badge">Semana 07</span>
+            <h2>Malware</h2>
+            <p>Lo que se replica: virus, gusanos y troyanos</p>
+          </div>
+        </article>
+
+        <!-- Semana 8 -->
+        <article class="card week-card semana-8">
+          <div class="carousel-container">
+            <img src="semana08-1.png" alt="Evidencia Semana 8 - Imagen 1" class="carousel-img active" onclick="openModal(this.src)">
+			<img src="semana08-2.png" alt="Evidencia Semana 8 - Imagen 2" class="carousel-img" onclick="openModal(this.src)">
+			<img src="semana08-3.png" alt="Evidencia Semana 8 - Imagen 3" class="carousel-img" onclick="openModal(this.src)">
+			<img src="semana08-4.png" alt="Evidencia Semana 8 - Imagen 4" class="carousel-img" onclick="openModal(this.src)">
+			<button class="carousel-btn prev" onclick="moveSlide(this, -1)">❮</button>
+            <button class="carousel-btn next" onclick="moveSlide(this, 1)">❯</button>
+            <div class="carousel-dots">
+              <span class="dot active" onclick="setSlide(this, 0)"></span>
+              <span class="dot" onclick="setSlide(this, 1)"></span>
+              <span class="dot" onclick="setSlide(this, 2)"></span>
+			  <span class="dot" onclick="setSlide(this, 3)"></span>
+          </div>
+          </div>
+          <div class="card-content">
+            <span class="week-badge">Semana 08</span>
+            <h2>Metodología PASTA</h2>
+            <p>Process for Attack Simulation and Threat Analysis.</p>
+          </div>
+        </article>
+
+        <!-- Semana 10 -->
+        <article class="card week-card semana-10">
+          <div class="carousel-container">
+            <img src="semana010-1.png" alt="Evidencia Semana 10 - Imagen 1" class="carousel-img active" onclick="openModal(this.src)">
+			<img src="semana010-2.png" alt="Evidencia Semana 10 - Imagen 2" class="carousel-img" onclick="openModal(this.src)">
+			<img src="semana010-3.png" alt="Evidencia Semana 10 - Imagen 3" class="carousel-img" onclick="openModal(this.src)">
+			<button class="carousel-btn prev" onclick="moveSlide(this, -1)">❮</button>
+            <button class="carousel-btn next" onclick="moveSlide(this, 1)">❯</button>
+            <div class="carousel-dots">
+              <span class="dot active" onclick="setSlide(this, 0)"></span>
+              <span class="dot" onclick="setSlide(this, 1)"></span>
+              <span class="dot" onclick="setSlide(this, 2)"></span>
+          </div>
+          </div>
+          <div class="card-content">
+            <span class="week-badge">Semana 10</span>
+            <h2>Ataques de Red y Aplicaciones</h2>
+            <p>SQL Injection - XSS - DDOS - Man-in-the-Middle</p>
+          </div>
+        </article>
+
+        <!-- Semana 11 -->
+        <article class="card week-card semana-11">
+          <div class="carousel-container">
+            <img src="semana011-1.png" alt="Evidencia Semana 11 - Imagen 1" class="carousel-img active" onclick="openModal(this.src)">
+			<img src="semana011-2.png" alt="Evidencia Semana 11 - Imagen 2" class="carousel-img" onclick="openModal(this.src)">
+			<img src="semana011-3.png" alt="Evidencia Semana 11 - Imagen 3" class="carousel-img" onclick="openModal(this.src)">
+			<button class="carousel-btn prev" onclick="moveSlide(this, -1)">❮</button>
+            <button class="carousel-btn next" onclick="moveSlide(this, 1)">❯</button>
+            <div class="carousel-dots">
+              <span class="dot active" onclick="setSlide(this, 0)"></span>
+              <span class="dot" onclick="setSlide(this, 1)"></span>
+              <span class="dot" onclick="setSlide(this, 2)"></span>
+          </div>
+          </div>
+          <div class="card-content">
+            <span class="week-badge">Semana 11</span>
+            <h2>Roles y Capas de Defensa</h2>
+            <p>¿Quién Defiende y Cómo se Defiende?</p>
+          </div>
+        </article>
+
+        <!-- Semana 12 -->
+        <article class="card week-card semana-12">
+          <div class="carousel-container">
+            <img src="semana012-1.png" alt="Evidencia Semana 12 - Imagen 1" class="carousel-img active" onclick="openModal(this.src)">
+			<img src="semana012-2.png" alt="Evidencia Semana 12 - Imagen 2" class="carousel-img" onclick="openModal(this.src)">
+			<img src="semana012-3.png" alt="Evidencia Semana 12 - Imagen 3" class="carousel-img" onclick="openModal(this.src)">
+			<img src="semana012-4.png" alt="Evidencia Semana 12 - Imagen 4" class="carousel-img" onclick="openModal(this.src)">
+			<img src="semana012-5.png" alt="Evidencia Semana 12 - Imagen 5" class="carousel-img" onclick="openModal(this.src)">
+			<img src="semana012-6.png" alt="Evidencia Semana 12 - Imagen 6" class="carousel-img" onclick="openModal(this.src)">
+			<button class="carousel-btn prev" onclick="moveSlide(this, -1)">❮</button>
+            <button class="carousel-btn next" onclick="moveSlide(this, 1)">❯</button>
+            <div class="carousel-dots">
+              <span class="dot active" onclick="setSlide(this, 0)"></span>
+              <span class="dot" onclick="setSlide(this, 1)"></span>
+              <span class="dot" onclick="setSlide(this, 2)"></span>
+			  <span class="dot" onclick="setSlide(this, 3)"></span>
+			  <span class="dot" onclick="setSlide(this, 4)"></span>
+			  <span class="dot" onclick="setSlide(this, 5)"></span>
+          </div>
+          </div>
+          <div class="card-content">
+            <span class="week-badge">Semana 12</span>
+            <h2>Marcos, regulaciones y cumplimiento</h2>
+            <p>Las Reglas del Juego</p>
+          </div>
+        </article>
+
+        <!-- Semana 14 -->
+        <article class="card week-card semana-14">
+          <div class="carousel-container">
+            <img src="semana014-1.png" alt="Evidencia Semana 14 - Imagen 1" class="carousel-img active" onclick="openModal(this.src)">
+			<img src="semana014-2.png" alt="Evidencia Semana 14 - Imagen 2" class="carousel-img" onclick="openModal(this.src)">
+			<img src="semana014-3.png" alt="Evidencia Semana 14 - Imagen 3" class="carousel-img" onclick="openModal(this.src)">
+			<img src="semana014-4.png" alt="Evidencia Semana 14 - Imagen 4" class="carousel-img" onclick="openModal(this.src)">
+			<button class="carousel-btn prev" onclick="moveSlide(this, -1)">❮</button>
+            <button class="carousel-btn next" onclick="moveSlide(this, 1)">❯</button>
+            <div class="carousel-dots">
+              <span class="dot active" onclick="setSlide(this, 0)"></span>
+              <span class="dot" onclick="setSlide(this, 1)"></span>
+              <span class="dot" onclick="setSlide(this, 2)"></span>
+			  <span class="dot" onclick="setSlide(this, 3)"></span>
+          </div>
+          </div>
+          <div class="card-content">
+            <span class="week-badge">Semana 14</span>
+            <h2>Cierre del Curso</h2>
+            <p>Presentación final del portafolio y evaluación integradora.</p>
+          </div>
+        </article>
+
+      </main>
+    </div>
+
+  </div>
+
+  <!-- MODAL PARA VER IMAGEN EN PANTALLA COMPLETA -->
+  <div id="imgModal" class="modal" onclick="closeModal()">
+    <span class="modal-close">&times;</span>
+    <img class="modal-content" id="fullImg">
+  </div>
+
+  <script>
+    // Manejo de la navegación y estado en la URL (Hash #)
+    function openPortfolio() {
+      window.location.hash = 'all';
+    }
+
+    function showCover() {
+      window.location.hash = '';
+    }
+
+    function filterWeek(weekClass) {
+      window.location.hash = weekClass;
+    }
+
+    // Procesa el cambio de vista según el Hash presente en la URL
+    function handleRouting() {
+      const hash = window.location.hash.replace('#', '');
+      const coverView = document.getElementById('cover-view');
+      const portfolioView = document.getElementById('portfolio-view');
+      const header = document.getElementById('portfolio-header');
+      const cards = document.querySelectorAll('.week-card');
+
+      if (!hash) {
+        // Si no hay Hash en la URL, se muestra la Portada
+        coverView.classList.remove('hidden');
+        portfolioView.classList.add('hidden');
+        window.scrollTo(0, 0);
+        return;
+      }
+
+      // Si hay Hash, se oculta la Portada y se entra al Portafolio
+      coverView.classList.add('hidden');
+      portfolioView.classList.remove('hidden');
+
+      // Mostrar u ocultar el título del Portafolio
+      if (hash === 'all') {
+        header.classList.remove('hidden');
+      } else {
+        header.classList.add('hidden');
+      }
+
+      // Filtrar las tarjetas de las semanas
+      cards.forEach(card => {
+        if (hash === 'all') {
+          if (card.classList.contains('semana-1') || card.classList.contains('semana-2')) {
+            card.classList.remove('hidden');
+          } else {
+            card.classList.add('hidden');
+          }
+        } else if (card.classList.contains(hash)) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+
+      window.scrollTo(0, 0);
+    }
+
+    // Escuchar el evento cuando cambia la URL o al recargar la página
+    window.addEventListener('hashchange', handleRouting);
+    window.addEventListener('DOMContentLoaded', handleRouting);
+
+    /* CARRUSEL DE IMÁGENES */
+    function showSlide(container, index) {
+      const images = container.querySelectorAll('.carousel-img');
+      const dots = container.querySelectorAll('.dot');
+      if (images.length <= 1) return;
+
+      let newIndex = index;
+      if (index >= images.length) newIndex = 0;
+      if (index < 0) newIndex = images.length - 1;
+
+      images.forEach((img, i) => {
+        img.classList.toggle('active', i === newIndex);
+      });
+
+      if (dots.length > 0) {
+        dots.forEach((dot, i) => {
+          dot.classList.toggle('active', i === newIndex);
+        });
+      }
+    }
+
+    function moveSlide(button, direction) {
+      const container = button.closest('.carousel-container');
+      const images = container.querySelectorAll('.carousel-img');
+      let currentIndex = 0;
+
+      images.forEach((img, i) => {
+        if (img.classList.contains('active')) currentIndex = i;
+      });
+
+      showSlide(container, currentIndex + direction);
+    }
+
+    function setSlide(dot, index) {
+      const container = dot.closest('.carousel-container');
+      showSlide(container, index);
+    }
+
+    /* MODAL / AMPLIAR IMAGEN */
+    function openModal(src) {
+      const modal = document.getElementById('imgModal');
+      const fullImg = document.getElementById('fullImg');
+      modal.style.display = 'flex';
+      fullImg.src = src;
+    }
+
+    function closeModal() {
+      document.getElementById('imgModal').style.display = 'none';
+    }
+  </script>
+
+</body>
+</html>
