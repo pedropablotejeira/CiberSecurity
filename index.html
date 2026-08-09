@@ -218,12 +218,15 @@
       height: 100%;
       object-fit: contain;
       opacity: 0;
+	  pointer-events: none;
       transition: opacity 0.4s ease-in-out;
       cursor: zoom-in;
     }
 
     .carousel-img.active {
       opacity: 1;
+	  pointer-events: auto;
+	  z-index: 1;
     }
 
     /* Botones de Navegación del Carrusel */
@@ -436,7 +439,7 @@
         <button class="week-btn" onclick="filterWeek('semana-10')">Semana 10</button>
         <button class="week-btn" onclick="filterWeek('semana-11')">Semana 11</button>
         <button class="week-btn" onclick="filterWeek('semana-12')">Semana 12</button>
-        <button class="week-btn" onclick="filterWeek('semana-14')">Semana 14</button>
+        <button class="week-btn" onclick="filterWeek('semana-13')">Semana 13</button>
       </div>
 
       <!-- Tarjetas de contenido por Semana -->
@@ -447,17 +450,19 @@
           <div class="carousel-container">
             <img src="semana01-1.png" alt="Evidencia Semana 1 - Imagen 1" class="carousel-img active" onclick="openModal(this.src)">
             <img src="semana01-2.png" alt="Evidencia Semana 1 - Imagen 2" class="carousel-img" onclick="openModal(this.src)">
+			<img src="semana01-3.jpeg" alt="Evidencia Semana 1 - Imagen 3" class="carousel-img" onclick="openModal(this.src)">
             <button class="carousel-btn prev" onclick="moveSlide(this, -1)">❮</button>
             <button class="carousel-btn next" onclick="moveSlide(this, 1)">❯</button>
             <div class="carousel-dots">
               <span class="dot active" onclick="setSlide(this, 0)"></span>
               <span class="dot" onclick="setSlide(this, 1)"></span>
+			  <span class="dot" onclick="setSlide(this, 2)"></span>
             </div>
           </div>
           <div class="card-content">
             <span class="week-badge">Semana 01</span>
             <h2>Módulo 1: Fundamentos, activos y Amenazas</h2>
-            <p>La tríada CIA (Confidencialidad, Integridad, Disponibilidad).</p>
+            <p>La tríada CIA (Confidencialidad, Integridad, Disponibilidad): En esta primera semana conocimos y entendimos lo que es la Triada CIA, que se puede resumir como el marco fundamental para evaluar escenarios, priorizar activos y determinar qué es realmente crítico proteger en caso de estudio.</p>
           </div>
         </article>
 
@@ -478,7 +483,7 @@
           <div class="card-content">
             <span class="week-badge">Semana 02</span>
             <h2>Módulo 1: Fundamentos, activos y Amenazas</h2>
-            <p>Laboratorio Táctico: Inventario y Tríada CIA.</p>
+            <p>Laboratorio Táctico: Inventario y Tríada CIA:  En esta semana, trabajamos en una tarea que pone a prueba, lo estudiado en el salón, logramos identificar las vulnerabilidades de mayor impacto, determinar la sensibilidad de los datos y establecer un orden de prioridad para la protección de la infraestructura.</p>
           </div>
         </article>
 		
@@ -501,7 +506,7 @@
           <div class="card-content">
             <span class="week-badge">Semana 03</span>
             <h2>Módulo 1: Fundamentos, activos y Amenazas</h2>
-            <p>Vulnerabilidades y Amenazas.</p>
+            <p>Vulnerabilidades y Amenazas: Iniciamos la comprensión de vulnerabilidad como tal, como se gestionan para poder identificarla, evaluarla y priorizarla, se nos presenta los tipos de vulnerabilidades y tipos de ciberataques.</p>
           </div>
         </article>
 
@@ -524,7 +529,7 @@
           <div class="card-content">
             <span class="week-badge">Semana 04</span>
             <h2>Módulo 2: Riesgo, Amenza y Vulnerabilidad</h2>
-            <p>Anatomía de un Desastre Evitable</p>
+            <p>Anatomía de un Desastre Evitable: Iniciamos a desglosar los fundamentos de la ciberseguridad: el riesgo, amenaza y vulnerabilidades, entendiendo que la vulnerabilidad es la debilidad que presentamos, la amenaza como el factor latente que busca explotarla y eso es igual a un riesgo que se maneja en términos de probabilidades.</p>
           </div>
         </article>
 
@@ -547,7 +552,7 @@
           <div class="card-content">
             <span class="week-badge">Semana 05</span>
             <h2>Módulo 2: Vulnerabilidades, CVEs y el Ciclo de Vida de un Ataque</h2>
-            <p>La Anatomía del Ciberataque</p>
+            <p>La Anatomía del Ciberataque: En estas sesiones se nos comparte el diccionario Global de Brechas que es como se identifican las vulnerabilidades Common Vulnerabilities and Exposures (CVE), detallando su formato, y que son guardadas en una base de datos La National Vulnerability Database (NVD).  Se nos exponen los tipos de vulnerabilidades de software, hardware y las humanas, siendo estas últimas la de mayor frecuencia y riesgo.</p>
           </div>
         </article>
 
@@ -557,18 +562,24 @@
             <img src="semana06-1.png" alt="Evidencia Semana 6 - Imagen 1" class="carousel-img active" onclick="openModal(this.src)">
 			<img src="semana06-2.png" alt="Evidencia Semana 6 - Imagen 2" class="carousel-img" onclick="openModal(this.src)">
 			<img src="semana06-3.png" alt="Evidencia Semana 6 - Imagen 3" class="carousel-img" onclick="openModal(this.src)">
+			<img src="semana06-4.png" alt="Evidencia Semana 6 - Imagen 4" class="carousel-img" onclick="openModal(this.src)">
+			<img src="semana06-5.png" alt="Evidencia Semana 6 - Imagen 5" class="carousel-img" onclick="openModal(this.src)">
 			<button class="carousel-btn prev" onclick="moveSlide(this, -1)">❮</button>
             <button class="carousel-btn next" onclick="moveSlide(this, 1)">❯</button>
             <div class="carousel-dots">
               <span class="dot active" onclick="setSlide(this, 0)"></span>
               <span class="dot" onclick="setSlide(this, 1)"></span>
               <span class="dot" onclick="setSlide(this, 2)"></span>
+			  <span class="dot" onclick="setSlide(this, 3)"></span>
+			  <span class="dot" onclick="setSlide(this, 4)"></span>
           </div>
 		  </div>
           <div class="card-content">
             <span class="week-badge">Semana 06</span>
             <h2>Charlas y Debates:</h2>
-            <p>Cuando la Identidad Cae</p>
+            <p>Cuando la Identidad Cae: En esta clase aprendimos que la identidad y las credenciales de los usuarios son uno de los principales objetivos de los atacantes. A través del caso real del ataque a Uber en 2022, vimos cómo una persona logró acceder a sistemas importantes utilizando ingeniería social, es decir, engañando a un empleado para obtener sus datos de acceso. También comprendimos que tener herramientas de seguridad no siempre es suficiente si no se utilizan correctamente o si las personas no siguen los procedimientos adecuados. Además, se destacó la importancia de controlar quién accede a los recursos de una empresa y limitar los permisos para reducir riesgos. </p>
+			<h3>Conclusión:</h3>
+			<p>La principal enseñanza de la clase es que la seguridad no depende únicamente de la tecnología, sino también del comportamiento de las personas y de la correcta aplicación de las medidas de protección. Un pequeño error humano puede abrir la puerta a grandes problemas. Por eso, las organizaciones deben fortalecer tanto sus sistemas de seguridad como la capacitación de sus colaboradores, para proteger mejor la información y evitar accesos no autorizados.</p>
           </div>
         </article>
 
@@ -580,7 +591,6 @@
 			<img src="semana07-3.png" alt="Evidencia Semana 7 - Imagen 3" class="carousel-img" onclick="openModal(this.src)">
 			<img src="semana07-4.png" alt="Evidencia Semana 7 - Imagen 4" class="carousel-img" onclick="openModal(this.src)">
 			<img src="semana07-5.png" alt="Evidencia Semana 7 - Imagen 5" class="carousel-img" onclick="openModal(this.src)">
-			<img src="semana07-6.png" alt="Evidencia Semana 7 - Imagen 6" class="carousel-img" onclick="openModal(this.src)">
 			<button class="carousel-btn prev" onclick="moveSlide(this, -1)">❮</button>
             <button class="carousel-btn next" onclick="moveSlide(this, 1)">❯</button>
             <div class="carousel-dots">
@@ -589,13 +599,14 @@
               <span class="dot" onclick="setSlide(this, 2)"></span>
 			  <span class="dot" onclick="setSlide(this, 3)"></span>
 			  <span class="dot" onclick="setSlide(this, 4)"></span>
-			  <span class="dot" onclick="setSlide(this, 5)"></span>
-          </div>
+		  </div>
           </div>
           <div class="card-content">
             <span class="week-badge">Semana 07</span>
             <h2>Malware</h2>
-            <p>Lo que se replica: virus, gusanos y troyanos</p>
+            <p>Lo que se replica: virus, gusanos y troyanos: Durante esta clase conocimos qué es el malware y detectamos tres de sus tipos más comunes: virus, gusanos y troyanos. Vimos que cada uno funciona de manera diferente. Los virus necesitan que una persona abra o ejecute un archivo para propagarse; los gusanos pueden extenderse por sí solos a través de una red y los troyanos se hacen pasar por programas confiables para engañar a los usuarios e instalarse en sus equipos. También analizamos casos reales que demostraron cómo estos programas han causado grandes problemas a empresas y usuarios alrededor del mundo. Además, comprendimos que existen herramientas de seguridad que ayudan a detectarlos, pero su efectividad depende del tipo de amenaza que enfrenten. </p>
+			<h3>Conclusión:</h3>
+			<p>La principal lección de la clase es que muchas amenazas aprovechan errores humanos, como abrir archivos desconocidos o instalar programas sin verificar su origen. Por eso, además de contar con herramientas de protección, es importante desarrollar buenos hábitos de seguridad. Conocer cómo actúan los virus, gusanos y troyanos nos permite identificar riesgos, prevenir infecciones y proteger mejor nuestra información y nuestros dispositivos.</p>
           </div>
         </article>
 
@@ -628,12 +639,14 @@
             <img src="semana010-1.png" alt="Evidencia Semana 10 - Imagen 1" class="carousel-img active" onclick="openModal(this.src)">
 			<img src="semana010-2.png" alt="Evidencia Semana 10 - Imagen 2" class="carousel-img" onclick="openModal(this.src)">
 			<img src="semana010-3.png" alt="Evidencia Semana 10 - Imagen 3" class="carousel-img" onclick="openModal(this.src)">
+			<img src="semana010-4.jpeg" alt="Evidencia Semana 10 - Imagen 4" class="carousel-img" onclick="openModal(this.src)">
 			<button class="carousel-btn prev" onclick="moveSlide(this, -1)">❮</button>
             <button class="carousel-btn next" onclick="moveSlide(this, 1)">❯</button>
             <div class="carousel-dots">
               <span class="dot active" onclick="setSlide(this, 0)"></span>
               <span class="dot" onclick="setSlide(this, 1)"></span>
               <span class="dot" onclick="setSlide(this, 2)"></span>
+			  <span class="dot" onclick="setSlide(this, 3)"></span>
           </div>
           </div>
           <div class="card-content">
@@ -649,12 +662,14 @@
             <img src="semana011-1.png" alt="Evidencia Semana 11 - Imagen 1" class="carousel-img active" onclick="openModal(this.src)">
 			<img src="semana011-2.png" alt="Evidencia Semana 11 - Imagen 2" class="carousel-img" onclick="openModal(this.src)">
 			<img src="semana011-3.png" alt="Evidencia Semana 11 - Imagen 3" class="carousel-img" onclick="openModal(this.src)">
+			<img src="semana011-4.jpeg" alt="Evidencia Semana 11 - Imagen 4" class="carousel-img" onclick="openModal(this.src)">
 			<button class="carousel-btn prev" onclick="moveSlide(this, -1)">❮</button>
             <button class="carousel-btn next" onclick="moveSlide(this, 1)">❯</button>
             <div class="carousel-dots">
               <span class="dot active" onclick="setSlide(this, 0)"></span>
               <span class="dot" onclick="setSlide(this, 1)"></span>
               <span class="dot" onclick="setSlide(this, 2)"></span>
+			  <span class="dot" onclick="setSlide(this, 3)"></span>
           </div>
           </div>
           <div class="card-content">
@@ -691,13 +706,13 @@
           </div>
         </article>
 
-        <!-- Semana 14 -->
-        <article class="card week-card semana-14">
+        <!-- Semana 13 -->
+        <article class="card week-card semana-13">
           <div class="carousel-container">
-            <img src="semana014-1.png" alt="Evidencia Semana 14 - Imagen 1" class="carousel-img active" onclick="openModal(this.src)">
-			<img src="semana014-2.png" alt="Evidencia Semana 14 - Imagen 2" class="carousel-img" onclick="openModal(this.src)">
-			<img src="semana014-3.png" alt="Evidencia Semana 14 - Imagen 3" class="carousel-img" onclick="openModal(this.src)">
-			<img src="semana014-4.png" alt="Evidencia Semana 14 - Imagen 4" class="carousel-img" onclick="openModal(this.src)">
+            <img src="semana014-1.png" alt="Evidencia Semana 13 - Imagen 1" class="carousel-img active" onclick="openModal(this.src)">
+			<img src="semana014-2.png" alt="Evidencia Semana 13 - Imagen 2" class="carousel-img" onclick="openModal(this.src)">
+			<img src="semana014-3.png" alt="Evidencia Semana 13 - Imagen 3" class="carousel-img" onclick="openModal(this.src)">
+			<img src="semana014-4.png" alt="Evidencia Semana 13 - Imagen 4" class="carousel-img" onclick="openModal(this.src)">
 			<button class="carousel-btn prev" onclick="moveSlide(this, -1)">❮</button>
             <button class="carousel-btn next" onclick="moveSlide(this, 1)">❯</button>
             <div class="carousel-dots">
@@ -708,9 +723,9 @@
           </div>
           </div>
           <div class="card-content">
-            <span class="week-badge">Semana 14</span>
+            <span class="week-badge">Semana 13</span>
             <h2>Cierre del Curso</h2>
-            <p>Presentación final del portafolio y evaluación integradora.</p>
+            <p>En síntesis, los conceptos abordados en estas semanas constituyen la columna vertebral de la ciberseguridad moderna. Comprender la Triada CIA como marco de referencia, analizar la relación entre amenazas, vulnerabilidades y riesgos, y utilizar estándares de la industria como el CVE y la NVD, nos brinda una metodología estructurada para evaluar el impacto real en cualquier infraestructura. Asimismo, la práctica evidencia que la seguridad no es solo un reto tecnológico sobre el hardware y el software, sino un desafío operativo donde el factor humano resulta decisivo para mantener una postura de defensa sólida y resiliente.</p>
           </div>
         </article>
 
