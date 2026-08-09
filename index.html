@@ -218,15 +218,12 @@
       height: 100%;
       object-fit: contain;
       opacity: 0;
-	  pointer-events: none;
       transition: opacity 0.4s ease-in-out;
       cursor: zoom-in;
     }
 
     .carousel-img.active {
       opacity: 1;
-	  pointer-events: auto;
-	  z-index: 1;
     }
 
     /* Botones de Navegación del Carrusel */
@@ -368,7 +365,7 @@
 
         <div class="cover-section">
           <h3>Portafolio de Ciberseguridad</h3>
-          <p>Evidencias del Curso de CiberSeguridad</p>
+          <p>Evidencias de Curso CiberSeguridad</p>
         </div>
 
         <div class="cover-section">
@@ -439,7 +436,7 @@
         <button class="week-btn" onclick="filterWeek('semana-10')">Semana 10</button>
         <button class="week-btn" onclick="filterWeek('semana-11')">Semana 11</button>
         <button class="week-btn" onclick="filterWeek('semana-12')">Semana 12</button>
-        <button class="week-btn" onclick="filterWeek('semana-13')">Semana 13</button>
+        <button class="week-btn" onclick="filterWeek('semana-14')">Semana 14</button>
       </div>
 
       <!-- Tarjetas de contenido por Semana -->
@@ -450,20 +447,17 @@
           <div class="carousel-container">
             <img src="semana01-1.png" alt="Evidencia Semana 1 - Imagen 1" class="carousel-img active" onclick="openModal(this.src)">
             <img src="semana01-2.png" alt="Evidencia Semana 1 - Imagen 2" class="carousel-img" onclick="openModal(this.src)">
-            <img src="semana01-3.jpeg" alt="Evidencia Semana 1 - Imagen 3" class="carousel-img" onclick="openModal(this.src)">
-			<button class="carousel-btn prev" onclick="moveSlide(this, -1)">❮</button>
+            <button class="carousel-btn prev" onclick="moveSlide(this, -1)">❮</button>
             <button class="carousel-btn next" onclick="moveSlide(this, 1)">❯</button>
             <div class="carousel-dots">
               <span class="dot active" onclick="setSlide(this, 0)"></span>
               <span class="dot" onclick="setSlide(this, 1)"></span>
-			  <span class="dot" onclick="setSlide(this, 2)"></span>
             </div>
           </div>
           <div class="card-content">
             <span class="week-badge">Semana 01</span>
             <h2>Módulo 1: Fundamentos, activos y Amenazas</h2>
-            <p>La tríada CIA (Confidencialidad, Integridad, Disponibilidad): En esta primera semana conocimos y entendimos lo que es la Triada CIA, que se puede resumir como el marco fundamental para evaluar escenarios, 
-				priorizar activos y determinar qué es realmente crítico proteger en caso de estudio.</p>
+            <p>La tríada CIA (Confidencialidad, Integridad, Disponibilidad).</p>
           </div>
         </article>
 
@@ -484,8 +478,7 @@
           <div class="card-content">
             <span class="week-badge">Semana 02</span>
             <h2>Módulo 1: Fundamentos, activos y Amenazas</h2>
-            <p>Laboratorio Táctico: Inventario y Tríada CIA:  En esta semana, trabajamos en una tarea que pone a prueba, lo estudiado en el salón, logramos identificar las vulnerabilidades de mayor impacto, 
-				determinar la sensibilidad de los datos y establecer un orden de prioridad para la protección de la infraestructura.</p>
+            <p>Laboratorio Táctico: Inventario y Tríada CIA.</p>
           </div>
         </article>
 		
@@ -508,8 +501,7 @@
           <div class="card-content">
             <span class="week-badge">Semana 03</span>
             <h2>Módulo 1: Fundamentos, activos y Amenazas</h2>
-            <p>Vulnerabilidades y Amenazas: Iniciamos la comprensión de vulnerabilidad como tal, 
-				como se gestionan para poder identificarla, evaluarla y priorizarla, se nos presenta los tipos de vulnerabilidades y tipos de ciberataques.</p>
+            <p>Vulnerabilidades y Amenazas.</p>
           </div>
         </article>
 
@@ -532,8 +524,7 @@
           <div class="card-content">
             <span class="week-badge">Semana 04</span>
             <h2>Módulo 2: Riesgo, Amenza y Vulnerabilidad</h2>
-            <p>Anatomía de un Desastre Evitable: En esta semana comenzamos a desglosar los fundamentos de la ciberseguridad, en el riesgo, amenaza y vulnerabilidades, entendiendo que La vulnerabilidad es la debilidad que presentamos, 
-				la amenaza como el factor latente que busca explotarla y eso es igual a un riesgo que se maneja en términos de probabilidades.</p>
+            <p>Anatomía de un Desastre Evitable</p>
           </div>
         </article>
 
@@ -556,9 +547,7 @@
           <div class="card-content">
             <span class="week-badge">Semana 05</span>
             <h2>Módulo 2: Vulnerabilidades, CVEs y el Ciclo de Vida de un Ataque</h2>
-            <p>Anatomía de un Desastre Evitable: En estas sesiones se nos comparte el diccionario Global de Brechas que es como se identifican las vulnerabilidades 
-				Common Vulnerabilities and Exposures (CVE), detallando su formato, y que son guardadas en una base de datos La National Vulnerability Database (NVD). 
-				Se nos exponen los tipos de vulnerabilidades de software, hardware y las humanas, siendo estas últimas la de mayor frecuencia y riesgo.</p>
+            <p>La Anatomía del Ciberataque</p>
           </div>
         </article>
 
@@ -568,16 +557,12 @@
             <img src="semana06-1.png" alt="Evidencia Semana 6 - Imagen 1" class="carousel-img active" onclick="openModal(this.src)">
 			<img src="semana06-2.png" alt="Evidencia Semana 6 - Imagen 2" class="carousel-img" onclick="openModal(this.src)">
 			<img src="semana06-3.png" alt="Evidencia Semana 6 - Imagen 3" class="carousel-img" onclick="openModal(this.src)">
-			<img src="semana06-4.png" alt="Evidencia Semana 6 - Imagen 4" class="carousel-img" onclick="openModal(this.src)">
-			<img src="semana06-5.png" alt="Evidencia Semana 6 - Imagen 5" class="carousel-img" onclick="openModal(this.src)">
 			<button class="carousel-btn prev" onclick="moveSlide(this, -1)">❮</button>
             <button class="carousel-btn next" onclick="moveSlide(this, 1)">❯</button>
             <div class="carousel-dots">
               <span class="dot active" onclick="setSlide(this, 0)"></span>
               <span class="dot" onclick="setSlide(this, 1)"></span>
               <span class="dot" onclick="setSlide(this, 2)"></span>
-			  <span class="dot" onclick="setSlide(this, 3)"></span>
-			  <span class="dot" onclick="setSlide(this, 4)"></span>
           </div>
 		  </div>
           <div class="card-content">
@@ -595,6 +580,7 @@
 			<img src="semana07-3.png" alt="Evidencia Semana 7 - Imagen 3" class="carousel-img" onclick="openModal(this.src)">
 			<img src="semana07-4.png" alt="Evidencia Semana 7 - Imagen 4" class="carousel-img" onclick="openModal(this.src)">
 			<img src="semana07-5.png" alt="Evidencia Semana 7 - Imagen 5" class="carousel-img" onclick="openModal(this.src)">
+			<img src="semana07-6.png" alt="Evidencia Semana 7 - Imagen 6" class="carousel-img" onclick="openModal(this.src)">
 			<button class="carousel-btn prev" onclick="moveSlide(this, -1)">❮</button>
             <button class="carousel-btn next" onclick="moveSlide(this, 1)">❯</button>
             <div class="carousel-dots">
@@ -603,7 +589,8 @@
               <span class="dot" onclick="setSlide(this, 2)"></span>
 			  <span class="dot" onclick="setSlide(this, 3)"></span>
 			  <span class="dot" onclick="setSlide(this, 4)"></span>
-		  </div>
+			  <span class="dot" onclick="setSlide(this, 5)"></span>
+          </div>
           </div>
           <div class="card-content">
             <span class="week-badge">Semana 07</span>
@@ -704,13 +691,13 @@
           </div>
         </article>
 
-        <!-- Semana 13 -->
-        <article class="card week-card semana-13">
+        <!-- Semana 14 -->
+        <article class="card week-card semana-14">
           <div class="carousel-container">
-            <img src="semana014-1.png" alt="Evidencia Semana 13 - Imagen 1" class="carousel-img active" onclick="openModal(this.src)">
-			<img src="semana014-2.png" alt="Evidencia Semana 13 - Imagen 2" class="carousel-img" onclick="openModal(this.src)">
-			<img src="semana014-3.png" alt="Evidencia Semana 13 - Imagen 3" class="carousel-img" onclick="openModal(this.src)">
-			<img src="semana014-4.png" alt="Evidencia Semana 13 - Imagen 4" class="carousel-img" onclick="openModal(this.src)">
+            <img src="semana014-1.png" alt="Evidencia Semana 14 - Imagen 1" class="carousel-img active" onclick="openModal(this.src)">
+			<img src="semana014-2.png" alt="Evidencia Semana 14 - Imagen 2" class="carousel-img" onclick="openModal(this.src)">
+			<img src="semana014-3.png" alt="Evidencia Semana 14 - Imagen 3" class="carousel-img" onclick="openModal(this.src)">
+			<img src="semana014-4.png" alt="Evidencia Semana 14 - Imagen 4" class="carousel-img" onclick="openModal(this.src)">
 			<button class="carousel-btn prev" onclick="moveSlide(this, -1)">❮</button>
             <button class="carousel-btn next" onclick="moveSlide(this, 1)">❯</button>
             <div class="carousel-dots">
@@ -721,7 +708,7 @@
           </div>
           </div>
           <div class="card-content">
-            <span class="week-badge">Semana 13</span>
+            <span class="week-badge">Semana 14</span>
             <h2>Cierre del Curso</h2>
             <p>Presentación final del portafolio y evaluación integradora.</p>
           </div>
