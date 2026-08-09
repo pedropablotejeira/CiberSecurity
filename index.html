@@ -218,12 +218,15 @@
       height: 100%;
       object-fit: contain;
       opacity: 0;
+	  pointer-events: none;
       transition: opacity 0.4s ease-in-out;
       cursor: zoom-in;
     }
 
     .carousel-img.active {
       opacity: 1;
+	  pointer-events: auto;
+	  z-index: 1;
     }
 
     /* Botones de Navegación del Carrusel */
@@ -457,7 +460,8 @@
           <div class="card-content">
             <span class="week-badge">Semana 01</span>
             <h2>Módulo 1: Fundamentos, activos y Amenazas</h2>
-            <p>La tríada CIA (Confidencialidad, Integridad, Disponibilidad).</p>
+            <p>La tríada CIA (Confidencialidad, Integridad, Disponibilidad): En esta primera semana conocimos y entendimos lo que es la Triada CIA, que se puede resumir como el marco fundamental para evaluar escenarios, 
+				priorizar activos y determinar qué es realmente crítico proteger en caso de estudio.</p>
           </div>
         </article>
 
@@ -478,7 +482,8 @@
           <div class="card-content">
             <span class="week-badge">Semana 02</span>
             <h2>Módulo 1: Fundamentos, activos y Amenazas</h2>
-            <p>Laboratorio Táctico: Inventario y Tríada CIA.</p>
+            <p>Laboratorio Táctico: Inventario y Tríada CIA:  En esta semana, trabajamos en una tarea que pone a prueba, lo estudiado en el salón, logramos identificar las vulnerabilidades de mayor impacto, 
+				determinar la sensibilidad de los datos y establecer un orden de prioridad para la protección de la infraestructura.</p>
           </div>
         </article>
 		
@@ -501,7 +506,8 @@
           <div class="card-content">
             <span class="week-badge">Semana 03</span>
             <h2>Módulo 1: Fundamentos, activos y Amenazas</h2>
-            <p>Vulnerabilidades y Amenazas.</p>
+            <p>Vulnerabilidades y Amenazas: En esta semana comenzamos a desglosar los fundamentos de la ciberseguridad, en el riesgo, amenaza y vulnerabilidades, entendiendo que La vulnerabilidad es la debilidad que presentamos, 
+				la amenaza como el factor latente que busca explotarla y eso es igual a un riesgo que se maneja en términos de probabilidades.</p>
           </div>
         </article>
 
